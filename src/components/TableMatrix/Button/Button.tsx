@@ -5,7 +5,7 @@ const Button = () => {
   return (
     <div className={styles.btnMatrix}>
       <button className={cn(styles.button, styles.btnAddrow)} type="button">
-        add row
+        Add row
       </button>
     </div>
   );
