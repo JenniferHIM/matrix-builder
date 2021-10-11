@@ -19,7 +19,7 @@
   color: $title-color;
 }
 .formInput {
-  @include displayFlex(center, center, null);
+  @include displayFlex(center, center);
   margin-bottom: 10px;
 }
 .input {
@@ -53,5 +53,5 @@
 }
 
 .btnForm {
-  @include displayFlex(center, center, null);
+  @include displayFlex(center, center);
 }
