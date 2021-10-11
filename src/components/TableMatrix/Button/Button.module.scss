@@ -1,0 +1,18 @@
+@import '../../../styles/variables';
+
+.button {
+  min-width: 140px;
+  height: 40px;
+  margin: 20px 0 20px 0;
+  font-size: 16px;
+  font-weight: bold;
+  border-color: transparent;
+  border-radius: 7px;
+  box-shadow: inset $grey-color 0 3px 8px,
+    $black-color 0 3px 8px -3px;
+}
+
+.btnAddrow {
+  color: $button-row;
+  background-color: $title-color;
+}
