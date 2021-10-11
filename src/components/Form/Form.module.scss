@@ -1,0 +1,57 @@
+@import '../../styles/variables';
+@import '../../styles/mixin';
+
+.wrapper {
+  @include displayFlex(center);
+  margin-top: 20px;
+}
+
+.sectionForm {
+  @include displayFlex(center, center, column);
+  width: 400px;
+  min-height: 300px;
+  background-color: $background-color;
+}
+.title {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  font-size: 50px;
+  color: $title-color;
+}
+.formInput {
+  @include displayFlex(center, center, null);
+  margin-bottom: 10px;
+}
+.input {
+  width: 60px;
+  height: 100%;
+  color:$input-color;
+  font-size: 18px;
+  border-color: transparent;
+  border-radius: 5px;
+  box-shadow: inset $grey-color 0 3px 8px,
+    $black-color 0 3px 8px -3px;
+}
+.inputText {
+  margin-right: 10px;
+  color: $white-color;
+  font-weight: bold;
+}
+
+.button {
+  min-width: 140px;
+  height: 40px;
+  margin: 20px 0 20px 0;
+  font-size: 16px;
+  font-weight: bold;
+  border-color: transparent;
+  border-radius: 7px;
+  box-shadow: inset  $grey-color 0 3px 8px,
+    $black-color 0 3px 8px -3px;
+    color: $input-color;
+    background-color: $button-color;
+}
+
+.btnForm {
+  @include displayFlex(center, center, null);
+}
