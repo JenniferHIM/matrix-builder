@@ -8,17 +8,18 @@ const topCells = (value: string | number) => {
   );
 };
 
-const TopUnit = (columns: number) => {
-  const banner = [topCells('№')];
+const topUnit = (columns: number) => {
+  let banner = [topCells('№')];
+
   for (let i = 0; i < columns; i++) {
-    banner.push(topCells(i + 1));
+    banner = [...banner, topCells(i + 1)];
   }
-  banner.push(topCells('Sum'));
+  banner = [...banner, topCells('Sum')];
   return banner;
 };
 
 const TableHeader = ({columns}: {columns: number}) => {
-  const banner = TopUnit(columns);
+  const banner = topUnit(columns);
   return (
     <thead className={styles.tableHeader}>
       <tr>{banner}</tr>
