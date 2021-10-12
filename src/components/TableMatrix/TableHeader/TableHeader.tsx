@@ -1,6 +1,6 @@
 import styles from '../TableHeader/TableHeader.module.scss';
 
-const topCells = (value: string | number) => {
+const topCells = (value: string) => {
   return (
     <th className={styles.headerItem} key={value}>
       {value}
@@ -12,7 +12,7 @@ const topUnit = (columns: number) => {
   let banner = [topCells('№')];
 
   for (let i = 0; i < columns; i++) {
-    banner = [...banner, topCells(i + 1)];
+    banner = [...banner, topCells(String(i + 1))];
   }
   banner = [...banner, topCells('Sum')];
   return banner;
