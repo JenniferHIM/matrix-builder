@@ -1,12 +1,13 @@
 import types from './types';
-import {createMatrix} from '../../function/index';
+import {createMatrix, matrixSort, findNearestCells} from '../../function/index';
+import {ICell} from '../../function/index';
 
-export const setSettings = (settings) => {
+export const setSettings = (settings: {columns: number; rows: number}) => {
   const matrix = createMatrix(settings);
   const sortedMatrix = matrixSort(matrix);
   return {
     type: types.SET_SETTINGS,
-    payload: {settings, matrix},
+    payload: {settings, matrix, sortedMatrix},
   };
 };
 
@@ -23,10 +24,24 @@ export const addRow = (row: number[]) => ({
   payload: row,
 });
 
+export const setNearestCells = (cells: number, sortedMatrix: Array<ICell>, item: ICell) => {
+  const nearest = findNearestCells(cells, sortedMatrix, item);
+  return {
+    type: types.SET_NEAREST_CELLS,
+    payload: {sortedMatrix, nearest},
+  };
+};
+
+export const resetNearestCells = () => ({
+  type: types.RESET_NEAREST_CELLS,
+});
+
 export default {
   addRow,
   deleteRow,
   setSettings,
   incrementCell,
   createMatrix,
+  setNearestCells,
+  resetNearestCells,
 };

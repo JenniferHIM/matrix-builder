@@ -1,5 +1,6 @@
 import types from './types';
 import {randomGenerator, matrixSort} from '../../function/index';
+import {MatrixActions} from './interface';
 
 const initialState = {
   settings: {
@@ -12,7 +13,7 @@ const initialState = {
   nearest: [],
 };
 
-export const matrix = (state = initialState, {type, payload}) => {
+export const matrix = (state = initialState, {type, payload}: MatrixActions) => {
   switch (type) {
     case types.SET_SETTINGS:
       return {
@@ -27,7 +28,7 @@ export const matrix = (state = initialState, {type, payload}) => {
 
     case types.INCREMENT_CELL:
       const newMatrixRows = state.matrixRows.map((row) => {
-        return row.map((item) => {
+        return row.map(item => {
           if (item.ID === payload.ID) {
             item.Amount += 1;
             return item;
