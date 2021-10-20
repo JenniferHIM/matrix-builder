@@ -30,7 +30,6 @@ export const matrix = (state = initialState, action: MatrixActions) => {
       const newMatrixRows = state.matrixRows.map((row) => {
         return row.map((item) => {
           if (item.ID === action.payload.ID) {
-            // item.Amount += 1;
             return {...item, Amount: item.Amount + 1};
           }
           return item;
@@ -47,10 +46,6 @@ export const matrix = (state = initialState, action: MatrixActions) => {
       return {
         ...state,
         sortedMatrix: [...matrixSort(newMatrix)],
-        //TODO
-        // ...state.sortedMatrix.filter((el) =>
-        //   state.matrixRows[action.payload].every((element) => element.ID !== el.ID)
-        // ),
         matrixRows: newMatrix,
         settings: {...state.settings, rows: state.settings.rows - 1},
       };

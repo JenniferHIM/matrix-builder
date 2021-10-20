@@ -11,10 +11,6 @@ export const setSettings = (settings: {columns: number; rows: number}) => {
   };
 };
 
-// export const createMatrix = () => ({
-//   type: types.CREATE_MATRIX,
-// });
-
 export const incrementCell = (item: ICell) => ({
   type: types.INCREMENT_CELL,
   payload: item,

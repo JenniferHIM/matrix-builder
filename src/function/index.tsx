@@ -7,12 +7,11 @@ export interface ICell {
 }
 
 export const randomGenerator = (): ICell => ({
-  Amount: Math.floor(Math.random() * (999 - 100 + 1)) + 100,
+  Amount: Math.floor(Math.random() * 1000),
   ID: uuidv4(),
 });
 
 export const createMatrix = (settings: {columns: number; rows: number}): Array<Array<ICell>> => {
-  // if (settings.columns && settings.rows) {
   const arr = new Array(settings.columns * settings.rows).fill(0).map(randomGenerator);
   console.log(arr);
 
@@ -52,7 +51,7 @@ export const calcAvgNumbers = (columns: number, rows: number, matrixRows: Array<
 };
 
 export const findNearestCells = (cells: number, sortedMatrix: Array<ICell>, item: ICell): Array<ICell> => {
-  const copySortedMatrix = [...[], ...sortedMatrix];
+  const copySortedMatrix = [...sortedMatrix];
   const nearestCells = [];
 
   for (let i = 0; i < cells; i++) {
