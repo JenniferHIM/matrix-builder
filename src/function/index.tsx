@@ -1,11 +1,6 @@
 import {FC} from 'react';
 import {v4 as uuidv4} from 'uuid';
 
-// interface IMatrix {
-//   rows: number;
-//   columns: number;
-// }
-
 export interface ICell {
   Amount: number;
   ID: string;

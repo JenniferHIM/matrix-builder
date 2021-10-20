@@ -1,6 +1,16 @@
 import types from './types';
 import {ICell} from '../../function/index';
 
+export type MatrixStore = {
+  settings: {
+    columns: number;
+    rows: number;
+    cells: number;
+  };
+  matrixRows: Array<Array<ICell>>;
+  sortedMatrix: Array<Array<ICell>>;
+  nearest: Array<ICell>;
+};
 interface ISetSettings {
   type: typeof types.SET_SETTINGS;
   payload: {
@@ -13,28 +23,28 @@ interface ISetSettings {
   };
 }
 interface ICreateMatrix {
-  type: typeof types.CREATE_MATRIX;
-  payload: {matrixRows: number};
+  type: types.CREATE_MATRIX;
+  payload: {matrixRows: Array<Array<ICell>>};
 }
 interface IIncrementCell {
-  type: typeof types.INCREMENT_CELL;
-  payload: {item: number};
+  type: types.INCREMENT_CELL;
+  payload: ICell;
 }
 interface IAddRow {
-  type: typeof types.ADD_ROW;
-  payload: {row: Array<number>; matrixSort: Array<Array<ICell>>};
+  type: types.ADD_ROW;
+  payload: {row: Array<number>};
 }
 interface IDeleteRow {
-  type: typeof types.DELETE_ROW;
-  payload: {index: number};
+  type: types.DELETE_ROW;
+  payload: number;
 }
 interface ISetNerestCells {
-  type: typeof types.SET_NEAREST_CELLS;
-  payload: {cell: number};
+  type: types.SET_NEAREST_CELLS;
+  payload: {sortedMatrix: Array<ICell>; nearest: Array<ICell>};
 }
 interface IResetNerestCell {
-  type: typeof types.RESET_NEAREST_CELLS;
-  payload: {cell: number};
+  type: types.RESET_NEAREST_CELLS;
+  payload: {cell: Array<number>};
 }
 
 export type MatrixActions =

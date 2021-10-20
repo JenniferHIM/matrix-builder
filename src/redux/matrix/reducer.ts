@@ -1,37 +1,37 @@
 import types from './types';
 import {randomGenerator, matrixSort} from '../../function/index';
-import {MatrixActions} from './interface';
+import {MatrixActions, MatrixStore} from './interface';
 
-const initialState = {
+const initialState: MatrixStore = {
   settings: {
-    columns: '',
-    rows: '',
-    cells: '',
+    columns: 0,
+    rows: 0,
+    cells: 0,
   },
   matrixRows: [],
   sortedMatrix: [],
   nearest: [],
 };
 
-export const matrix = (state = initialState, {type, payload}: MatrixActions) => {
-  switch (type) {
+export const matrix = (state = initialState, action: MatrixActions) => {
+  switch (action.type) {
     case types.SET_SETTINGS:
       return {
         ...state.settings,
-        settings: payload.settings,
-        matrixRows: payload.matrix,
-        sortedMatrix: payload.sortedMatrix,
+        settings: action.payload.settings,
+        matrixRows: action.payload.matrix,
+        sortedMatrix: action.payload.sortedMatrix,
       };
 
     case types.CREATE_MATRIX:
-      return {...state, matrixRows: [...payload]};
+      return {...state, matrixRows: [action.payload]};
 
     case types.INCREMENT_CELL:
       const newMatrixRows = state.matrixRows.map((row) => {
-        return row.map(item => {
-          if (item.ID === payload.ID) {
-            item.Amount += 1;
-            return item;
+        return row.map((item) => {
+          if (item.ID === action.payload.ID) {
+            // item.Amount += 1;
+            return {...item, Amount: item.Amount + 1};
           }
           return item;
         });
@@ -39,18 +39,19 @@ export const matrix = (state = initialState, {type, payload}: MatrixActions) => 
       return {
         ...state,
         matrixRows: newMatrixRows,
-        sortedMatrix: [...matrixSort([...state.sortedMatrix])],
+        sortedMatrix: [...matrixSort(newMatrixRows)],
       };
 
     case types.DELETE_ROW:
+      const newMatrix = [...state.matrixRows].splice(action.payload, 1);
       return {
         ...state,
-        sortedMatrix: [
-          ...matrixSort([
-            ...state.sortedMatrix.filter((el) => state.matrixRows[payload].every((element) => element.ID !== el.ID)),
-          ]),
-        ],
-        matrixRows: state.matrixRows.filter((el, index) => index !== payload),
+        sortedMatrix: [...matrixSort(newMatrix)],
+        //TODO
+        // ...state.sortedMatrix.filter((el) =>
+        //   state.matrixRows[action.payload].every((element) => element.ID !== el.ID)
+        // ),
+        matrixRows: newMatrix,
         settings: {...state.settings, rows: state.settings.rows - 1},
       };
 
@@ -62,13 +63,13 @@ export const matrix = (state = initialState, {type, payload}: MatrixActions) => 
         ...state,
         settings: {...state.settings, rows: state.settings.rows + 1},
         matrixRows: [...state.matrixRows, arrRow],
-        sortedMatrix: [...matrixSort([...state.sortedMatrix, ...arrRow])],
+        sortedMatrix: [...matrixSort([...state.sortedMatrix, arrRow])],
       };
 
     case types.SET_NEAREST_CELLS:
       return {
         ...state,
-        nearest: [...payload.nearest],
+        nearest: [...action.payload.nearest],
       };
 
     case types.RESET_NEAREST_CELLS:

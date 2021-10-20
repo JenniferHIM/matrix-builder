@@ -11,7 +11,11 @@ export const setSettings = (settings: {columns: number; rows: number}) => {
   };
 };
 
-export const incrementCell = (item: number) => ({
+// export const createMatrix = () => ({
+//   type: types.CREATE_MATRIX,
+// });
+
+export const incrementCell = (item: ICell) => ({
   type: types.INCREMENT_CELL,
   payload: item,
 });
@@ -19,6 +23,7 @@ export const deleteRow = (index: number) => ({
   type: types.DELETE_ROW,
   payload: index,
 });
+
 export const addRow = (row: number[]) => ({
   type: types.ADD_ROW,
   payload: row,
