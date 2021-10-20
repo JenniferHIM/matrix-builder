@@ -24,7 +24,7 @@ module.exports = {
     'no-shadow': 'off',
     'react/button-has-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    'react/jsx-filename-extension': ['warn', {extensions: ['.tsx', '.ts']}],
+    'react/jsx-filename-extension': ['warn', {extensions: ['.tsx', '.ts', '.js']}],
     'no-param-reassign': [2, {props: false}],
     'prettier/prettier': [
       'error',
@@ -38,6 +38,7 @@ module.exports = {
       {
         ts: 'never',
         tsx: 'never',
+        js: 'never',
       },
     ],
     'jsx-a11y/no-noninteractive-element-interactions': 'off',

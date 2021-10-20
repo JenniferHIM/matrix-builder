@@ -1,0 +1,12 @@
+@import '../../../styles/mixin';
+.banner {
+  @include displayFlex(center, center, column);
+  width: 40px;
+  height: 40px;
+  font-weight: bold;
+}
+td {
+  width: 67px;
+  height: 42px;
+  user-select: none;
+}
