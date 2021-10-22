@@ -8,8 +8,8 @@ export type MatrixStore = {
     cells: number;
   };
   matrixRows: Array<Array<ICell>>;
-  sortedMatrix: Array<Array<ICell>>;
-  nearest: Array<ICell>;
+  sortedMatrix: Array<ICell>;
+  nearest?: Array<ICell>;
 };
 interface ISetSettings {
   type: typeof types.SET_SETTINGS;
@@ -17,6 +17,7 @@ interface ISetSettings {
     settings: {
       columns: number;
       rows: number;
+      cells: number;
     };
     matrix: Array<Array<ICell>>;
     sortedMatrix: Array<ICell>;
@@ -24,7 +25,7 @@ interface ISetSettings {
 }
 interface ICreateMatrix {
   type: types.CREATE_MATRIX;
-  payload: {matrixRows: Array<Array<ICell>>};
+  payload: Array<ICell>;
 }
 interface IIncrementCell {
   type: types.INCREMENT_CELL;
@@ -32,7 +33,7 @@ interface IIncrementCell {
 }
 interface IAddRow {
   type: types.ADD_ROW;
-  payload: {row: Array<number>};
+  payload: Array<number>;
 }
 interface IDeleteRow {
   type: types.DELETE_ROW;

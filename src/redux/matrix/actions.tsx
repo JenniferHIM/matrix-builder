@@ -2,7 +2,7 @@ import types from './types';
 import {createMatrix, matrixSort, findNearestCells} from '../../function/index';
 import {ICell} from '../../function/index';
 
-export const setSettings = (settings: {columns: number; rows: number}) => {
+export const setSettings = (settings: {columns: number; rows: number; cells: number}) => {
   const matrix = createMatrix(settings);
   const sortedMatrix = matrixSort(matrix);
   return {

@@ -13,7 +13,7 @@ const initialState: MatrixStore = {
   nearest: [],
 };
 
-export const matrix = (state = initialState, action: MatrixActions) => {
+export const matrix = (state = initialState, action: MatrixActions): MatrixStore => {
   switch (action.type) {
     case types.SET_SETTINGS:
       return {

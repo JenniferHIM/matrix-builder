@@ -1,5 +1,4 @@
-import {createStore} from 'redux';
-import {combineReducers} from '@reduxjs/toolkit';
+import {createStore, combineReducers} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {matrix} from './matrix/reducer';
 
