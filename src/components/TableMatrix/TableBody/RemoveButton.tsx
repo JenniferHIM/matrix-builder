@@ -14,7 +14,6 @@ type RemoveButtonProps = {
 const RemoveButton: FC<RemoveButtonProps> = ({index, deleteRow}: RemoveButtonProps) => {
   const removeRow = () => {
     deleteRow(index);
-    console.log(removeRow);
   };
 
   return (
