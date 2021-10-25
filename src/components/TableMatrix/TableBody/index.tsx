@@ -4,7 +4,7 @@ import ColumnAvg from './ColumnAvg';
 import RemoveButton from './RemoveButton';
 import RowSumCell from './RowSumCell';
 import styles from '../TableBody/TableBody.module.scss';
-import {ICell} from '../../../function/index';
+import {ICell} from 'function/index';
 import {RootState} from 'redux/store';
 
 type ITableBodyProps = {

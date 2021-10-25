@@ -1,12 +1,12 @@
 import {useState, useEffect, FC} from 'react';
 import {sumRowNumbers} from '../../../function/index';
-import {ICell} from '../../../function/index';
+import {ICell} from 'function/index';
 import styles from '../TableBody/TableBody.module.scss';
 
 type RowSumCellProps = {
   row: Array<ICell>;
-  handleMouseEnter: (param: any) => void;
-  handleMouseLeave: (param: any) => void;
+  handleMouseEnter: (event: React.MouseEvent<HTMLElement>) => void;
+  handleMouseLeave: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
 const RowSumCell: FC<RowSumCellProps> = ({row, handleMouseEnter, handleMouseLeave}: RowSumCellProps) => {
