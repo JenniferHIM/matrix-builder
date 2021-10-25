@@ -58,7 +58,7 @@ export const matrix = (state = initialState, action: MatrixActions): MatrixStore
         ...state,
         settings: {...state.settings, rows: state.settings.rows + 1},
         matrixRows: [...state.matrixRows, arrRow],
-        sortedMatrix: [...matrixSort([...state.sortedMatrix, arrRow])],
+        sortedMatrix: [...matrixSort([state.sortedMatrix, arrRow])],
       };
 
     case types.SET_NEAREST_CELLS:
