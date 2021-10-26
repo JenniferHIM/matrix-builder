@@ -1,7 +1,6 @@
 import {FC, useEffect, useState} from 'react';
-import {sumRowAvg, calcAvgNumbers} from '../../../function/index';
+import {sumRowAvg, calcAvgNumbers, ICell} from 'function/index';
 import styles from '../TableBody/TableBody.module.scss';
-import {ICell} from '../../../function/index';
 
 type ColumnAvgProps = {
   columns: number;

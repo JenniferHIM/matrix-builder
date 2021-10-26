@@ -1,5 +1,5 @@
 import types from './types';
-import {randomGenerator, matrixSort} from '../../function/index';
+import {randomGenerator, matrixSort} from 'function/index';
 import {MatrixActions, MatrixStore} from './interface';
 
 const initialState: MatrixStore = {

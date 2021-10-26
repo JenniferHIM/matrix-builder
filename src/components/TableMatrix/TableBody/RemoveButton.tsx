@@ -1,8 +1,8 @@
-import actions from '../../../redux/matrix/actions';
+import actions from 'redux/matrix/actions';
 import {FC} from 'react';
 import {connect} from 'react-redux';
 import styles from '../TableBody/TableBody.module.scss';
-import {ICell} from '../../../function/index';
+import {ICell} from 'function/index';
 
 type RemoveButtonProps = {
   index: number;

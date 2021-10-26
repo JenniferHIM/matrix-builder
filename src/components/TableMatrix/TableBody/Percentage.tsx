@@ -8,7 +8,7 @@ type IPercentageProps = {
   item: ICell;
 };
 
-const Percentage: FC<IPercentageProps> = ({item, row}: IPercentageProps) => {
+const Percentage: FC<IPercentageProps> = ({item, row}) => {
   const [sum, setSum] = useState(sumRowNumbers(row));
 
   useEffect(() => {
