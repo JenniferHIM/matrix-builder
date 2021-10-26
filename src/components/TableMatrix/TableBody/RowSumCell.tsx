@@ -3,13 +3,13 @@ import {sumRowNumbers} from '../../../function/index';
 import {ICell} from 'function/index';
 import styles from '../TableBody/TableBody.module.scss';
 
-type RowSumCellProps = {
+type IRowSumCellProps = {
   row: Array<ICell>;
   handleMouseEnter: (event: React.MouseEvent<HTMLElement>) => void;
   handleMouseLeave: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
-const RowSumCell: FC<RowSumCellProps> = ({row, handleMouseEnter, handleMouseLeave}: RowSumCellProps) => {
+const RowSumCell: FC<IRowSumCellProps> = ({row, handleMouseEnter, handleMouseLeave}: IRowSumCellProps) => {
   const [sum, setSum] = useState(sumRowNumbers(row));
 
   useEffect(() => {
