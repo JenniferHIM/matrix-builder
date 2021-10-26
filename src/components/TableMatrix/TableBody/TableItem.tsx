@@ -1,19 +1,11 @@
-import {connect} from 'react-redux';
+import {connect, ConnectedProps} from 'react-redux';
 import {FC} from 'react';
 import cn from 'classnames';
 import actions from 'redux/matrix/actions';
 import {ICell} from 'function';
 import {RootState} from 'redux/store';
 
-type ITableItemProps = {
-  item: ICell;
-  cells: number;
-  sortedMatrix: Array<ICell>;
-  incrementCell: (item: ICell) => void;
-  setNearestCells: (cells: number, sortedMatrix: Array<ICell>, item: ICell) => void;
-  resetNearestCells: () => void;
-  nearest: Array<ICell>;
-};
+type ITableItemProps = ConnectedProps<typeof connector> & {item: ICell; cells: number};
 
 const TableItem: FC<ITableItemProps> = ({
   item,
@@ -64,6 +56,5 @@ const mapDispatchToProps = {
   resetNearestCells: actions.resetNearestCells,
 };
 
-// const connector = connect(mapStateToProps, mapDispatchToProps);
-// export default connector(TableItem);
-export default connect(mapStateToProps, mapDispatchToProps)(TableItem);
+const connector = connect(mapStateToProps, mapDispatchToProps);
+export default connector(TableItem);
