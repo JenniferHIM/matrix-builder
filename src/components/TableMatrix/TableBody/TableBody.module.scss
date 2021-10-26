@@ -10,3 +10,23 @@ td {
   height: 42px;
   user-select: none;
 }
+
+.percent {
+  @include displayFlex(center, center, null);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: $white-color;
+}
+.percentText {
+  position: relative;
+  z-index: 2;
+}
+.columnPercent {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  background-color: #fc4639f5;
+  width: 100%;
+}
