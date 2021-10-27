@@ -1,4 +1,13 @@
-@import '../../../styles/mixin';
+@import 'styles/mixin';
+@import 'styles/variables';
+
+/* buttons */
+.btnCreate {
+  color: #f83030;
+  background-color: #61dafb;
+}
+
+/*table*/
 .banner {
   @include displayFlex(center, center, column);
   width: 40px;
@@ -10,7 +19,28 @@ td {
   height: 42px;
   user-select: none;
 }
+.amount {
+  @include displayFlex(center, center, null);
+  width: 100%;
+  height: 100%;
+  color: #0d4d5e;
+  font-weight: bold;
+  background-color: #61dafb;
+  border-radius: 7px;
+}
+.amount:hover,
+.amount.focus {
+  color: #ffff;
+  background-color: #f87a63;
+}
 
+.nearestItem {
+  width: 100%;
+  height: 100%;
+  border-radius: 7px;
+  color: #0d4d5e;
+  background-color: rgb(245, 248, 39);
+}
 .percent {
   @include displayFlex(center, center, null);
   position: relative;
@@ -30,3 +60,20 @@ td {
   background-color: #fc4639f5;
   width: 100%;
 }
+.removeButton {
+  border: none;
+  background-color: #fff;
+}
+
+.avg,
+.sum {
+  color: $white-color;
+  background-color: #1ba59e;
+}
+.avg:hover,
+.avg:focus,
+.sum:hover,
+.sum.focus {
+  background-color: #1ba59e;
+}
+

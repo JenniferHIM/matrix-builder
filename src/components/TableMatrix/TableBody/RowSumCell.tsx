@@ -9,7 +9,7 @@ type IRowSumCellProps = {
   handleMouseLeave: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
-const RowSumCell: FC<IRowSumCellProps> = ({row, handleMouseEnter, handleMouseLeave}: IRowSumCellProps) => {
+const RowSumCell: FC<IRowSumCellProps> = ({row, handleMouseEnter, handleMouseLeave}) => {
   const [sum, setSum] = useState(sumRowNumbers(row));
 
   useEffect(() => {

@@ -1,5 +1,7 @@
-@import './styles/mixin';
+@import 'styles/mixin';
+@import 'styles/variables';
 
 .sectionTable {
   @include displayFlex(center, center, column);
 }
+
