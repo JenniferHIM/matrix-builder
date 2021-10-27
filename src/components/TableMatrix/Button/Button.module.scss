@@ -1,4 +1,5 @@
 @import '../../../styles/variables';
+@import '../../../styles/mixin';
 
 .button {
   min-width: 140px;
@@ -15,4 +16,8 @@
 .btnAddrow {
   color: $button-row;
   background-color: $title-color;
+}
+
+.btnMatrix {
+   @include displayFlex(center, center, null);
 }

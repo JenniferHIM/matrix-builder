@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import ColumnAvg from './ColumnAvg';
 import RemoveButton from './RemoveButton';
 import RowSumCell from './RowSumCell';
+import Percentage from './Percentage';
+import TableItem from './TableItem';
 import styles from '../TableBody/TableBody.module.scss';
 import {ICell} from 'function/index';
 import {RootState} from 'redux/store';
@@ -14,7 +16,7 @@ type ITableBodyProps = {
   matrixRows: Array<Array<ICell>>;
 };
 
-const TableBody: FC<ITableBodyProps> = ({columns, rows, cells, matrixRows}: ITableBodyProps) => {
+const TableBody: FC<ITableBodyProps> = ({columns, rows, cells, matrixRows}) => {
   const [showPercent, setShowPercent] = useState(-1);
   return (
     <tbody>
@@ -22,6 +24,11 @@ const TableBody: FC<ITableBodyProps> = ({columns, rows, cells, matrixRows}: ITab
         matrixRows.map((row, i) => (
           <tr key={JSON.stringify(row)}>
             <td className={styles.banner}>{i + 1}</td>
+            {row.map((item) => (
+              <td className={styles.tableItem} key={item.Amount}>
+                {showPercent === i ? <Percentage item={item} row={row} /> : <TableItem item={item} cells={cells} />}
+              </td>
+            ))}
             <RowSumCell
               row={row}
               handleMouseEnter={() => setShowPercent(i)}
@@ -39,7 +46,7 @@ const mapStateToProps = (state: RootState) => ({
   columns: state.matrix.settings.columns,
   rows: state.matrix.settings.rows,
   cells: state.matrix.settings.cells,
-  // TODO -- add at the next step arr: state.matrix.arr,
+  // arr: state.matrix.arr,
   matrixRows: state.matrix.matrixRows,
   sortedMatrix: state.matrix.sortedMatrix,
 });

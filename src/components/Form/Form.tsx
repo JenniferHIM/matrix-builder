@@ -1,6 +1,6 @@
 import FormSettings from 'components/Form/FormSettings';
 import {useState} from 'react';
-import styles from '../../components/Form/Form.module.scss';
+import styles from '../Form/Form.module.scss';
 
 const Form = () => {
   return (
