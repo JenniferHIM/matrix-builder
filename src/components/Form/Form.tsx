@@ -1,28 +1,40 @@
 import FormSettings from 'components/Form/FormSettings';
-import {useState} from 'react';
+import {FC, useState} from 'react';
 import {RootState} from 'redux/store';
-import {connect} from 'react-redux';
+import {connect, ConnectedProps} from 'react-redux';
 import actions from '../../redux/matrix/actions';
 import styles from '../Form/Form.module.scss';
+import {ICell} from 'function';
 
-const Form = () => {
+interface IFormData {
+  [key: string]: number;
+}
+
+interface ISettings {
+  setSettings: (value: ICell) => void;
+  settings: ICell;
+}
+
+const Form: FC<FormProps> = ({setSettings, settings}) => {
+  const [formData, setFormData] = useState<IFormData>({});
   const [columns, setColumns] = useState('');
   const [rows, setRows] = useState('');
   const [cells, setCells] = useState('');
-  const handleClick = (event) => {
+
+  const handleClick = (event: any) => {
     const {name, value} = event.currentTarget;
-    this.setState({[name]: +value});
+    // this.setState({[name]: +value});
+    setFormData({...formData, [name]: +value});
   };
 
-  const submitForm = (event) => {
+  const submitForm = (event: any) => {
     event.preventDefault();
-    const settings = {
-      columns: columns,
-      rows: rows,
-      cells: cells,
+    const settingsMatrix = {
+      columns,
+      rows,
+      cells,
     };
-    this.props.setSettings(settings);
-    console.log(settings);
+    setSettings(settings);
     reset();
   };
 
@@ -37,7 +49,7 @@ const Form = () => {
     <div className={styles.wrapper}>
       <form className={styles.sectionForm} onSubmit={submitForm}>
         <h1 className={styles.title}>Matrix builder</h1>
-        <FormSettings addInputData={handleClick} {...this.state} />
+        <FormSettings rows={0} columns={0} cells={0} addInputData={(event) => handleClick(event)} {...formData} />
         {/* rows={0} columns={0} cells={0} */}
       </form>
     </div>
@@ -45,11 +57,15 @@ const Form = () => {
 };
 
 const mapStateToProps = (state: RootState) => ({
-  settings: state.settings,
+  settings: state.matrix.settings,
 });
 const mapDispatchToProps = {
   setSettings: actions.setSettings,
 };
+type FormProps = ConnectedProps<typeof connector>;
+// & { settings: ICell; setSettings: (value: ICell) => void };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form);
+const connector = connect(mapStateToProps, mapDispatchToProps);
+export default connector(Form);
+// export default connect(mapStateToProps, mapDispatchToProps)(Form);
 // export default Form;

@@ -1,5 +1,6 @@
 export interface IForm {
-  rows: number;
-  columns: number;
-  cells: number;
+  rows: number | null;
+  columns: number | null;
+  cells: number | null;
+  addInputData?: (event: any) => void;
 }
