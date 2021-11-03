@@ -3,9 +3,9 @@ import {ICell} from '../../function/index';
 
 export type MatrixStore = {
   settings: {
-    columns: number;
-    rows: number;
-    cells: number;
+    columns: number | string;
+    rows: number | string;
+    cells: number | string;
   };
   matrixRows: Array<Array<ICell>>;
   sortedMatrix: Array<ICell>;
@@ -15,9 +15,9 @@ interface ISetSettings {
   type: typeof types.SET_SETTINGS;
   payload: {
     settings: {
-      columns: number;
-      rows: number;
-      cells: number;
+      columns: number | string;
+      rows: number | string;
+      cells: number | string;
     };
     matrix: Array<Array<ICell>>;
     sortedMatrix: Array<ICell>;

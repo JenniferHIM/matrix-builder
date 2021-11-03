@@ -3,7 +3,7 @@ import {IForm} from '../../redux/form/interfaces/index';
 import styles from '../Form/Form.module.scss';
 
 const FormSettings: FC<IForm> = (props: IForm) => {
-  const {rows, columns, cells, addInputData} = props;
+  const {rows, columns, cells, setColumns, setCells, setRows} = props;
   return (
     <>
       <div className={styles.formInput}>
@@ -15,8 +15,8 @@ const FormSettings: FC<IForm> = (props: IForm) => {
           className={styles.input}
           name="columns"
           min="0"
-          value={columns || ''}
-          onChange={addInputData}
+          value={Number(columns) || ' '}
+          onChange={(event: any) => setColumns(event.target.value)}
         />
       </div>
 
@@ -24,7 +24,14 @@ const FormSettings: FC<IForm> = (props: IForm) => {
         <label className={styles.inputText} htmlFor="/">
           Enter the number of rows
         </label>
-        <input type="number" className={styles.input} name="rows" min="0" value={rows || ''} onChange={addInputData} />
+        <input
+          type="number"
+          className={styles.input}
+          name="rows"
+          min="0"
+          value={rows || ''}
+          onChange={(event: any) => setRows(event.target.value)}
+        />
       </div>
 
       <div className={styles.formInput}>
@@ -37,7 +44,7 @@ const FormSettings: FC<IForm> = (props: IForm) => {
           name="cells"
           min="0"
           value={cells || ''}
-          onChange={addInputData}
+          onChange={(event: any) => setCells(event.target.value)}
         />
       </div>
 

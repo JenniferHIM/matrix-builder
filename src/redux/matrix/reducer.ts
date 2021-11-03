@@ -47,16 +47,16 @@ export const matrix = (state = initialState, action: MatrixActions): MatrixStore
         ...state,
         sortedMatrix: [...matrixSort(newMatrix)],
         matrixRows: newMatrix,
-        settings: {...state.settings, rows: state.settings.rows - 1},
+        settings: {...state.settings, rows: Number(state.settings.rows) - 1},
       };
 
     case types.ADD_ROW:
-      const arrRow = new Array(state.settings.columns * 1).fill(0).map(() => {
+      const arrRow = new Array(Number(state.settings.columns) * 1).fill(0).map(() => {
         return randomGenerator();
       });
       return {
         ...state,
-        settings: {...state.settings, rows: state.settings.rows + 1},
+        settings: {...state.settings, rows: Number(state.settings.rows) + 1},
         matrixRows: [...state.matrixRows, arrRow],
         sortedMatrix: [...matrixSort([state.sortedMatrix, arrRow])],
       };

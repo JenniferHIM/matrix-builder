@@ -2,6 +2,7 @@ import {useState, useEffect, FC} from 'react';
 import {sumRowNumbers} from '../../../function/index';
 import {ICell} from 'function/index';
 import styles from '../TableBody/TableBody.module.scss';
+import cn from 'classnames';
 
 type IRowSumCellProps = {
   row: Array<ICell>;
@@ -18,7 +19,7 @@ const RowSumCell: FC<IRowSumCellProps> = ({row, handleMouseEnter, handleMouseLea
 
   return (
     <td className={styles.tableItem} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <div className={styles.amountSum}>{sum}</div>
+      <div className={cn(styles.amount, styles.sum)}>{sum}</div>
     </td>
   );
 };

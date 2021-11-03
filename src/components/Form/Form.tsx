@@ -4,22 +4,21 @@ import {RootState} from 'redux/store';
 import {connect, ConnectedProps} from 'react-redux';
 import actions from '../../redux/matrix/actions';
 import styles from '../Form/Form.module.scss';
-import {ICell} from 'function';
 
 interface IFormData {
   [key: string]: number;
 }
 
-interface ISettings {
-  setSettings: (value: ICell) => void;
-  settings: ICell;
-}
+// interface ISettings {
+//   setSettings: (value: ICell) => void;
+//   settings: ICell;
+// }
 
 const Form: FC<FormProps> = ({setSettings, settings}) => {
   const [formData, setFormData] = useState<IFormData>({});
-  const [columns, setColumns] = useState('');
-  const [rows, setRows] = useState('');
-  const [cells, setCells] = useState('');
+  const [columns, setColumns] = useState<number | string>('');
+  const [rows, setRows] = useState<number | string>('');
+  const [cells, setCells] = useState<number | string>('');
 
   const handleClick = (event: any) => {
     const {name, value} = event.currentTarget;
@@ -34,9 +33,11 @@ const Form: FC<FormProps> = ({setSettings, settings}) => {
       rows,
       cells,
     };
-    setSettings(settings);
+    setSettings(settingsMatrix);
     reset();
   };
+
+  console.log(submitForm);
 
   const reset = () => {
     setColumns('');
@@ -49,8 +50,16 @@ const Form: FC<FormProps> = ({setSettings, settings}) => {
     <div className={styles.wrapper}>
       <form className={styles.sectionForm} onSubmit={submitForm}>
         <h1 className={styles.title}>Matrix builder</h1>
-        <FormSettings rows={0} columns={0} cells={0} addInputData={(event) => handleClick(event)} {...formData} />
-        {/* rows={0} columns={0} cells={0} */}
+        <FormSettings
+          rows={0}
+          columns={0}
+          cells={0}
+          setColumns={setColumns}
+          setRows={setRows}
+          setCells={setCells}
+          addInputData={(event) => handleClick(event)}
+          {...formData}
+        />
       </form>
     </div>
   );

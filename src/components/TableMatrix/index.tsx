@@ -8,9 +8,9 @@ import styles from './TableBody/TableBody.module.scss';
 
 type ITableMatrixProps = {
   settings: {
-    columns: number;
-    rows: number;
-    cells: number;
+    columns: number | string;
+    rows: number | string;
+    cells: number | string;
   };
 };
 

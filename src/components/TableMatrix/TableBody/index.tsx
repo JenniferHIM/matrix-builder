@@ -10,9 +10,9 @@ import {ICell} from 'function/index';
 import {RootState} from 'redux/store';
 
 type ITableBodyProps = {
-  columns: number;
-  rows: number;
-  cells: number;
+  columns: number | string;
+  rows: number | string;
+  cells: number | string;
   matrixRows: Array<Array<ICell>>;
 };
 
@@ -26,7 +26,11 @@ const TableBody: FC<ITableBodyProps> = ({columns, rows, cells, matrixRows}) => {
             <td className={styles.banner}>{i + 1}</td>
             {row.map((item) => (
               <td className={styles.tableItem} key={item.Amount}>
-                {showPercent === i ? <Percentage item={item} row={row} /> : <TableItem item={item} cells={cells} />}
+                {showPercent === i ? (
+                  <Percentage item={item} row={row} />
+                ) : (
+                  <TableItem item={item} cells={Number(cells)} />
+                )}
               </td>
             ))}
             <RowSumCell
@@ -34,10 +38,10 @@ const TableBody: FC<ITableBodyProps> = ({columns, rows, cells, matrixRows}) => {
               handleMouseEnter={() => setShowPercent(i)}
               handleMouseLeave={() => setShowPercent(-1)}
             />
-            <RemoveButton index={i} matrixRows={matrixRows} rows={rows} />
+            <RemoveButton index={i} matrixRows={matrixRows} rows={Number(rows)} />
           </tr>
         ))}
-      <ColumnAvg matrixRows={matrixRows} columns={columns} rows={rows} />
+      <ColumnAvg matrixRows={matrixRows} columns={Number(columns)} rows={Number(rows)} />
     </tbody>
   );
 };

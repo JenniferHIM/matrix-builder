@@ -7,7 +7,7 @@ import {ICell} from 'function/index';
 type RemoveButtonProps = {
   index: number;
   deleteRow: (param: any) => void;
-  rows?: number;
+  rows: number | string;
   matrixRows?: Array<Array<ICell>>;
 };
 
@@ -15,6 +15,8 @@ const RemoveButton: FC<RemoveButtonProps> = ({index, deleteRow}: RemoveButtonPro
   const removeRow = () => {
     deleteRow(index);
   };
+
+  console.log(removeRow);
 
   return (
     <td className={styles.banner}>

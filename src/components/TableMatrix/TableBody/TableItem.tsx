@@ -4,8 +4,9 @@ import cn from 'classnames';
 import actions from 'redux/matrix/actions';
 import {ICell} from 'function';
 import {RootState} from 'redux/store';
+import styles from '../TableBody/TableBody.module.scss';
 
-type ITableItemProps = ConnectedProps<typeof connector> & {item: ICell; cells: number};
+type ITableItemProps = ConnectedProps<typeof connector> & {item: ICell; cells: number | string};
 
 const TableItem: FC<ITableItemProps> = ({
   item,
@@ -33,9 +34,8 @@ const TableItem: FC<ITableItemProps> = ({
 
   return (
     <div
-      className={cn('styles.amount', {
-        'styles.nearestItem': nearest && nearest.includes(item),
-      })}
+      className={cn(styles.amount, {'styles.nearestItem': nearest && nearest.includes(item)})}
+      // : nearest && nearest.includes(item)
       onClick={onClickItem}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

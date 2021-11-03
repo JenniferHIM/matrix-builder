@@ -3,4 +3,7 @@ export interface IForm {
   columns: number | null;
   cells: number | null;
   addInputData?: (event: any) => void;
+  setColumns: (event: any) => void;
+  setRows: (event: any) => void;
+  setCells: (event: any) => void;
 }
