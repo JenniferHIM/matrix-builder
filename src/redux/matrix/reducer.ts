@@ -42,7 +42,7 @@ export const matrix = (state = initialState, action: MatrixActions): MatrixStore
       };
 
     case types.DELETE_ROW:
-      const newMatrix = [...state.matrixRows].splice(action.payload, 1);
+      const newMatrix = [...state.matrixRows].filter((_, index) => index !== action.payload);
       return {
         ...state,
         sortedMatrix: [...matrixSort(newMatrix)],

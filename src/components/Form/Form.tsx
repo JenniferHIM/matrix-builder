@@ -51,9 +51,9 @@ const Form: FC<FormProps> = ({setSettings, settings}) => {
       <form className={styles.sectionForm} onSubmit={submitForm}>
         <h1 className={styles.title}>Matrix builder</h1>
         <FormSettings
-          rows={0}
-          columns={0}
-          cells={0}
+          rows={rows}
+          columns={columns}
+          cells={cells}
           setColumns={setColumns}
           setRows={setRows}
           setCells={setCells}

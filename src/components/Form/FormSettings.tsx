@@ -15,7 +15,7 @@ const FormSettings: FC<IForm> = (props: IForm) => {
           className={styles.input}
           name="columns"
           min="0"
-          value={Number(columns) || ' '}
+          value={Number(columns) || ''}
           onChange={(event: any) => setColumns(event.target.value)}
         />
       </div>
