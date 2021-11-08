@@ -9,11 +9,6 @@ interface IFormData {
   [key: string]: number;
 }
 
-// interface ISettings {
-//   setSettings: (value: ICell) => void;
-//   settings: ICell;
-// }
-
 const Form: FC<FormProps> = ({setSettings, settings}) => {
   const [formData, setFormData] = useState<IFormData>({});
   const [columns, setColumns] = useState<number | string>('');
@@ -37,13 +32,10 @@ const Form: FC<FormProps> = ({setSettings, settings}) => {
     reset();
   };
 
-  console.log(submitForm);
-
   const reset = () => {
     setColumns('');
     setRows('');
     setCells('');
-    // this.setState({columns: '', rows: '', cells: ''});
   };
 
   return (
@@ -72,9 +64,6 @@ const mapDispatchToProps = {
   setSettings: actions.setSettings,
 };
 type FormProps = ConnectedProps<typeof connector>;
-// & { settings: ICell; setSettings: (value: ICell) => void };
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 export default connector(Form);
-// export default connect(mapStateToProps, mapDispatchToProps)(Form);
-// export default Form;

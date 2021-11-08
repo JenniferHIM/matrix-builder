@@ -16,8 +16,6 @@ const RemoveButton: FC<RemoveButtonProps> = ({index, deleteRow}: RemoveButtonPro
     deleteRow(index);
   };
 
-  console.log(removeRow);
-
   return (
     <td className={styles.banner}>
       <button className={styles.removeButton} type="submit" onClick={() => removeRow()}>

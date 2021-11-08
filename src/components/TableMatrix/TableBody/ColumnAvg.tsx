@@ -15,7 +15,6 @@ const ColumnAvg: FC<ColumnAvgProps> = ({columns, rows, matrixRows}) => {
   useEffect(() => {
     if (matrixRows) {
       const calc = calcAvgNumbers(columns, rows, matrixRows);
-      console.log(calc);
       setAvg(calc);
     }
   }, [columns, rows, matrixRows]);

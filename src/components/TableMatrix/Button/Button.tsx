@@ -5,16 +5,9 @@ import styles from '../Button/Button.module.scss';
 import cn from 'classnames';
 import {RootState} from 'redux/store';
 
-// type IButton = {
-//   addRow: Array<number>;
-//   matrixRows: Array<Array<ICell>>;
-//   arrRow?: Array<ICell>;
-// };
-
 const Button: FC<ButtonProps> = ({addRow, matrixRows}) => {
   const handleAddRow = () => {
     addRow(matrixRows);
-    console.log(addRow);
   };
 
   return (
