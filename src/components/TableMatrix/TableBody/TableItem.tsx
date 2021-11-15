@@ -34,7 +34,7 @@ const TableItem: FC<ITableItemProps> = ({
 
   return (
     <div
-      className={cn(styles.amount, {'styles.nearestItem': nearest && nearest.includes(item)})}
+      className={cn(styles.amount, {[styles.nearestItem]: nearest && nearest.includes(item)})}
       // : nearest && nearest.includes(item)
       onClick={onClickItem}
       onMouseEnter={handleMouseEnter}

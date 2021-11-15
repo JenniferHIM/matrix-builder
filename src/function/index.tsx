@@ -57,21 +57,27 @@ export const findNearestCells = (cells: number | string, sortedMatrix: Array<ICe
   const nearestCells = [];
 
   for (let i = 0; i < cells; i++) {
+    if (i >= sortedMatrix.length - 1) {
+      break;
+    }
     const copySortedMatrixId = copySortedMatrix.map((item) => item.ID);
 
     if (item) {
       let nearest;
       const itemIndex = copySortedMatrixId.indexOf(item.ID);
       if (itemIndex === 0) {
-        nearest = copySortedMatrix[1];
+        nearest = copySortedMatrix[i + 1];
       } else if (itemIndex === copySortedMatrix.length - 1) {
-        nearest = copySortedMatrix[copySortedMatrix.length - 2];
+        nearest = copySortedMatrix[copySortedMatrix.length - i - 2];
       } else {
         const prevEl = copySortedMatrix[itemIndex - 1];
         const nextEl = copySortedMatrix[itemIndex + 1];
-        nearest = item.Amount - prevEl.Amount > nextEl.Amount - item.Amount ? nextEl : prevEl;
+        const currentItem = copySortedMatrix[itemIndex];
+        const prevDiff = Math.abs(currentItem.Amount - prevEl.Amount);
+        const nextDiff = Math.abs(nextEl.Amount - currentItem.Amount);
+        nearest = prevDiff < nextDiff ? prevEl : nextEl;
+        // nearest = item.Amount - prevEl.Amount > nextEl.Amount - item.Amount ? nextEl : prevEl;
       }
-      // copySortedMatrix.splice(copySortedMatrixId.indexOf(nearest.ID), 1);
       copySortedMatrix.splice(copySortedMatrixId.indexOf(nearest.ID), 1);
       nearestCells.push(nearest);
     }
