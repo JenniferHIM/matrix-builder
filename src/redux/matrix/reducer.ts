@@ -66,14 +66,6 @@ export const matrix = (state = initialState, action: MatrixActions): MatrixStore
         ...state,
         nearest: [...action.payload.nearest],
       };
-    // if (state.settings.cells > 0) {
-    //   return {
-    //     ...state,
-    //     nearest: [...action.payload.nearest],
-    //   };
-    // } else {
-    //   return {...state};
-    // }
 
     case types.RESET_NEAREST_CELLS:
       return {...state, nearest: initialState.nearest};

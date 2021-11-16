@@ -53,35 +53,25 @@ export const calcAvgNumbers = (
 };
 
 export const findNearestCells = (cells: number | string, sortedMatrix: Array<ICell>, item: ICell): Array<ICell> => {
-  const copySortedMatrix = [...[], ...sortedMatrix];
-  const nearestCells = [];
-
+  const copySortedMatrix = sortedMatrix.filter((el) => el.ID !== item.ID);
+  let nearestCells: Array<ICell> = [];
   for (let i = 0; i < cells; i++) {
     if (i >= sortedMatrix.length - 1) {
       break;
     }
-    const copySortedMatrixId = copySortedMatrix.map((item) => item.ID);
 
-    if (item) {
-      let nearest;
-      const itemIndex = copySortedMatrixId.indexOf(item.ID);
-      if (itemIndex === 0) {
-        nearest = copySortedMatrix[i + 1];
-      } else if (itemIndex === copySortedMatrix.length - 1) {
-        nearest = copySortedMatrix[copySortedMatrix.length - i - 2];
-      } else {
-        const prevEl = copySortedMatrix[itemIndex - 1];
-        const nextEl = copySortedMatrix[itemIndex + 1];
-        // const currentItem = copySortedMatrix[itemIndex];
-        // const prevDiff = Math.abs(currentItem.Amount - prevEl.Amount);
-        // const nextDiff = Math.abs(nextEl.Amount - currentItem.Amount);
-        // nearest = prevDiff < nextDiff ? prevEl : nextEl;
-        nearest = item.Amount - prevEl.Amount > nextEl.Amount - item.Amount ? nextEl : prevEl;
-      }
-      copySortedMatrix.splice(copySortedMatrixId.indexOf(nearest.ID), 1);
-      // copySortedMatrix.filter((item) => item.ID);
-      nearestCells.push(nearest);
-    }
+    const nearest = copySortedMatrix.reduce(
+      (prevEl, nextEl) =>
+        Math.abs(item.Amount - prevEl.Amount) < Math.abs(nextEl.Amount - item.Amount) ? prevEl : nextEl,
+      copySortedMatrix[0]
+    );
+
+    copySortedMatrix.splice(
+      copySortedMatrix.findIndex((el) => el.ID === nearest.ID),
+      1
+    );
+
+    nearestCells = [...nearestCells, nearest];
   }
   return nearestCells;
 };
