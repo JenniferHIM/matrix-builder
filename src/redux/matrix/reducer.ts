@@ -42,21 +42,21 @@ export const matrix = (state = initialState, action: MatrixActions): MatrixStore
       };
 
     case types.DELETE_ROW:
-      const newMatrix = [...state.matrixRows].splice(action.payload, 1);
+      const newMatrix = [...state.matrixRows].filter((_, index) => index !== action.payload);
       return {
         ...state,
         sortedMatrix: [...matrixSort(newMatrix)],
         matrixRows: newMatrix,
-        settings: {...state.settings, rows: state.settings.rows - 1},
+        settings: {...state.settings, rows: Number(state.settings.rows) - 1},
       };
 
     case types.ADD_ROW:
-      const arrRow = new Array(state.settings.columns * 1).fill(0).map(() => {
+      const arrRow = new Array(Number(state.settings.columns) * 1).fill(0).map(() => {
         return randomGenerator();
       });
       return {
         ...state,
-        settings: {...state.settings, rows: state.settings.rows + 1},
+        settings: {...state.settings, rows: Number(state.settings.rows) + 1},
         matrixRows: [...state.matrixRows, arrRow],
         sortedMatrix: [...matrixSort([state.sortedMatrix, arrRow])],
       };

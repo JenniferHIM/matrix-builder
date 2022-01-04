@@ -7,9 +7,9 @@ import {FC, useState, useEffect} from 'react';
 
 type IAppProps = {
   settings: {
-    columns: number;
-    rows: number;
-    cells: number;
+    columns: number | string;
+    rows: number | string;
+    cells: number | string;
   };
 };
 

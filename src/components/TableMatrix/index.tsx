@@ -8,18 +8,18 @@ import styles from './TableBody/TableBody.module.scss';
 
 type ITableMatrixProps = {
   settings: {
-    columns: number;
-    rows: number;
-    cells: number;
+    columns: number | string;
+    rows: number | string;
+    cells: number | string;
   };
 };
 
 const TableMatrix: FC<ITableMatrixProps> = ({settings}) => {
   return (
     <div className={styles.table}>
-      {settings.columns && settings.rows && settings.cells && <Button />}
+      {!!settings.columns && !!settings.rows && !!settings.cells && <Button />}
       <table className={styles.tableMatrix}>
-        {settings.columns && settings.rows && settings.cells && (
+        {!!settings.columns && !!settings.rows && !!settings.cells && (
           <>
             <TableHeader {...settings} />
             <TableBody />

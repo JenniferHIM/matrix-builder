@@ -18,8 +18,8 @@ const topUnit = (columns: number) => {
   return banner;
 };
 
-const TableHeader = ({columns}: {columns: number}) => {
-  const banner = topUnit(columns);
+const TableHeader = ({columns}: {columns: number | string}) => {
+  const banner = topUnit(Number(columns));
   return (
     <thead className={styles.tableHeader}>
       <tr>{banner}</tr>

@@ -1,10 +1,11 @@
 import {FC, useEffect, useState} from 'react';
 import {sumRowAvg, calcAvgNumbers, ICell} from 'function/index';
 import styles from '../TableBody/TableBody.module.scss';
+import cn from 'classnames';
 
 type ColumnAvgProps = {
-  columns: number;
-  rows: number;
+  columns: number | string;
+  rows: number | string;
   matrixRows: Array<Array<ICell>>;
 };
 
@@ -24,12 +25,12 @@ const ColumnAvg: FC<ColumnAvgProps> = ({columns, rows, matrixRows}) => {
       {avg &&
         avg.map((el, index) => (
           <td className={styles.tableItem} key={index}>
-            <div className={styles.amountAvg}>{el}</div>
+            <div className={cn(styles.amount, styles.avg)}>{el}</div>
           </td>
         ))}
       {avg && (
         <td className={styles.tableItem}>
-          <div className={styles.amountAvg}>{sumRowAvg(avg)}</div>
+          <div className={cn(styles.amount, styles.avg)}>{sumRowAvg(avg)}</div>
         </td>
       )}
     </tr>

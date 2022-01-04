@@ -7,7 +7,7 @@ import {ICell} from 'function/index';
 type RemoveButtonProps = {
   index: number;
   deleteRow: (param: any) => void;
-  rows?: number;
+  rows: number | string;
   matrixRows?: Array<Array<ICell>>;
 };
 
